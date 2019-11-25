@@ -1,6 +1,7 @@
 {
   "name": "v-qr",
   "version": "0.0.1",
+  "description": "QR code with logo component for Vue.js.",
   "private": false,
   "author": "jingguangyan  jgy19940729@gmail.com",
   "main": "dist/v-qr.umd.min.js",
@@ -8,6 +9,14 @@
     "dev": "vue-cli-service serve",
     "build": "vue-cli-service build --target lib --name v-qr --dest dist packages/index.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jingguangyan/v-qr.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jingguangyan/v-qr/issues"
+  },
+  "homepage": "https://github.com/jingguangyan/v-qr",
   "keywords": [
     "v-qr",
     "v-qrcode",
@@ -15,7 +24,9 @@
     "vue-qrcode",
     "vue logo qrcode"
   ],
-  "description": "The Vue 2.x component of Qrcode.js, ",
+  "files": [
+    "/dist"
+  ],
   "dependencies": {
     "core-js": "^3.3.2",
     "qrcode": "^1.4.4",
