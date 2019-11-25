@@ -1,5 +1,5 @@
 <template>
-  <div class="v-qrcode-warp" :style="styles">
+  <div class="v-qrcode-wrap" :style="styles">
     <img ref="qr" :src="qrcodeImg" class="v-qrcode"/>
   </div>
 </template>
@@ -19,6 +19,17 @@ const util = {
         reject(error)
       }
     })
+  },
+  debounce (fn, delay) {
+    var timer = null // 声明计时器
+    return function () {
+      var context = this
+      var args = arguments
+      clearTimeout(timer)
+      timer = setTimeout(function () {
+        fn.apply(context, args)
+      }, delay)
+    }
   }
 }
 export default {
@@ -72,7 +83,10 @@ export default {
     },
     ratio: {
       type: Number,
-      default: 1
+      default: 1,
+      validator (value) {
+        return value <= 3
+      }
     },
     level: {
       type: String,
@@ -84,6 +98,7 @@ export default {
   },
   data () {
     return {
+      initDebounce: null,
       qrcodeImg: ''
     }
   },
@@ -97,14 +112,14 @@ export default {
     ratioSize () {
       return this.size * this.ratio
     },
-    ratioMargin () { // margin 如果大于 size 的 1/2 则取 size 的 1/2
+    ratioMargin () {
       return Math.min(this.ratioSize / 2, this.ratio * this.margin)
     },
     ratioQrcodeSize () {
       return (this.ratioSize - (2 * this.ratioMargin))
     },
     ratioLogoSize () {
-      return Math.min(this.logoSize * this.ratio, this.ratioSize)
+      return Math.min(this.logoSize * this.ratio, this.ratioQrcodeSize)
     },
     qrcodeDrawStringPoint () {
       return this.ratioMargin
@@ -116,7 +131,7 @@ export default {
   watch: {
     $props: {
       handler () {
-        this.init()
+        this.initDebounce()
       },
       deep: true
     }
@@ -129,7 +144,7 @@ export default {
     },
     async drawQrcode (hasLogo) {
       try {
-        const qrcodeUrl = await QRCode.toDataURL(this.text, {
+        const qrcodeUrl = await QRCode.toDataURL(this.text || ' ', {
           width: this.ratioQrcodeSize,
           margin: 0,
           scale: 1,
@@ -162,15 +177,13 @@ export default {
   },
   mounted () {
     this.init()
+    this.initDebounce = util.debounce(this.init, 200)
   }
 }
 </script>
 
 <style scoped>
-.v-qrcode-warp {
-  display: inline-block;
-}
-.v-qrcode-warp .v-qrcode {
+.v-qrcode-wrap .v-qrcode {
   display: block;
   width: 100%;
 }
