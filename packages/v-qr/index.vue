@@ -48,7 +48,7 @@ export default {
     text: {
       required: true,
       type: String,
-      default: ''
+      default: ' '
     },
     logo: {
       type: String
@@ -85,7 +85,7 @@ export default {
       type: Number,
       default: 1,
       validator (value) {
-        return value <= 3
+        return [1, 2, 3].includes(value)
       }
     },
     level: {
