@@ -4,7 +4,7 @@ QR code with logo component for Vue.js.
 带logo二维码组件. 基于 [node-qrcode](https://github.com/soldair/node-qrcode)
 
 ## Examples
-[Online Examples](jingguangyan.github.io/v-qr/)
+[Online Examples](https://jingguangyan.github.io/v-qr/)
 
 <img src="https://raw.githubusercontent.com/jingguangyan/v-qr/master/examples/assets/example.png" width="300">
 
