@@ -6,7 +6,7 @@ QR code with logo component for Vue.js.
 ## Examples
 [Online Examples](jingguangyan.github.io/v-qr/)
 
-<img src="https://github.com/jingguangyan/v-qr/blob/master/examples/assets/example.png?raw=true" width="300">
+<img src="https://raw.githubusercontent.com/jingguangyan/v-qr/master/examples/assets/example.png" width="300">
 
 ## Installation
 **install with NPM**
@@ -32,7 +32,7 @@ Vue.ues(Vqr)
   :logoSize="50"
   :margin="10"
   :ratio="1"
-  :level="M"
+  level="M"
 />
 ```
 **Props**
