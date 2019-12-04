@@ -6,7 +6,7 @@ QR code with logo component for Vue.js.
 ## Examples
 [Online Examples](https://jingguangyan.github.io/v-qr/)
 
-<img src="https://raw.githubusercontent.com/jingguangyan/v-qr/master/examples/assets/example.png" width="300">
+<img src="https://jingguangyan.github.io/example-images/v-qr-example.png" width="300">
 
 ## Installation
 **install with NPM**
@@ -48,3 +48,9 @@ Vue.ues(Vqr)
 | qrcodeColor |  二维码的颜色，只支持16进制 | String | #000000ff |
 | backgroundColor |  二维码的背景颜色，只支持16进制 | String | #ffffffff |
 | level |  容错级别 ("L" \| "M" \| "Q" \| "H") | String | "M" |
+
+**Events**
+
+| Event name | Description | Res |
+| --- | --- | --- |
+| on-finish | 完成二维码生成时触发 | Image(base64) |

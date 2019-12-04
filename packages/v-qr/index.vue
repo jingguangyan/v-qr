@@ -170,9 +170,13 @@ export default {
           ctx.drawImage(logo, this.logoDrawStringPoint, this.logoDrawStringPoint, this.ratioLogoSize, this.ratioLogoSize)
         }
         this.qrcodeImg = canvas.toDataURL()
+        this.$emit('on-finish', this.qrcodeImg)
       } catch (error) {
         throw error
       }
+    },
+    getImage () {
+      return this.qrcodeImg
     }
   },
   mounted () {

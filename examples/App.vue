@@ -12,6 +12,7 @@
       :margin="margin"
       :ratio="ratio"
       :level="level"
+      @on-finish="onFinish"
     />
     <ul class="qrcode-option-control">
       <li>
@@ -115,8 +116,8 @@ export default {
     }
   },
   methods: {
-    handleChange (e) {
-      console.log(e)
+    onFinish (image) {
+      console.log(image)
     }
   }
 }
